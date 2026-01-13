@@ -1,0 +1,166 @@
+:root {
+  --primary: #6366f1;
+  --secondary: #8b5cf6;
+  --accent: #ec4899;
+  --dark: #0f172a;
+  --darker: #020617;
+  --light: #f1f5f9;
+  --gray: #64748b;
+  --success: #10b981;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--darker);
+  color: var(--light);
+  overflow-x: hidden;
+}
+
+#techCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+}
+/* step 1  */
+nav {
+position: fixed;
+top: 0;
+width: 100%;
+height: 90px;
+padding: 0 6%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+background: rgba(15, 23, 42, 0.65);
+backdrop-filter: blur(16px) saturate(160%);
+-webkit-backdrop-filter: blur(16px) saturate(160%);
+
+border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+
+z-index: 1000;
+transition: all 0.4s ease;
+}
+
+/* ===============================
+Logo Styling
+================================ */
+
+.logo {
+font-size: 1.6rem;
+font-weight: 700;
+letter-spacing: 0.5px;
+
+background: linear-gradient(
+120deg,
+var(--primary),
+var(--accent),
+var(--primary)
+);
+background-size: 200% auto;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+
+animation: logoGlow 4s linear infinite;
+}
+
+@keyframes logoGlow {
+to {
+background-position: 200% center;
+}
+}
+
+/* ===============================
+Navigation Links
+================================ */
+
+.nav-links {
+display: flex;
+align-items: center;
+gap: 2.5rem;
+list-style: none;
+}
+
+/* Link Base */
+.nav-links a {
+position: relative;
+text-decoration: none;
+color: var(--light);
+font-size: 0.95rem;
+font-weight: 500;
+letter-spacing: 0.3px;
+
+padding: 6px 2px;
+transition: color 0.3s ease;
+}
+
+/* Gradient underline animation */
+.nav-links a::before {
+content: '';
+position: absolute;
+left: 50%;
+bottom: -8px;
+transform: translateX(-50%);
+
+width: 0%;
+height: 2px;
+border-radius: 4px;
+
+background: linear-gradient(
+90deg,
+var(--primary),
+var(--accent)
+);
+
+transition: width 0.35s ease;
+}
+
+/* Glow effect */
+.nav-links a::after {
+content: '';
+position: absolute;
+inset: 0;
+border-radius: 6px;
+background: transparent;
+transition: background 0.3s ease;
+z-index: -1;
+}
+
+.nav-links a:hover {
+color: var(--accent);
+}
+
+.nav-links a:hover::before {
+width: 100%;
+}
+
+.nav-links a:hover::after {
+background: rgba(255, 255, 255, 0.05);
+}
+
+/* ===============================
+Active Link (Optional)
+================================ */
+
+.nav-links a.active {
+color: var(--accent);
+}
+
+.nav-links a.active::before {
+width: 100%;
+}
